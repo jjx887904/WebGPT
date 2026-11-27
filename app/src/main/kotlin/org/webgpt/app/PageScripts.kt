@@ -53,7 +53,7 @@ internal object PageScripts {
         val context = webView.context
         try {
             val everywhere = setOf("*")
-            WebViewCompat.addDocumentStartJavaScript(webView, pageOverrides(context), everywhere)\n            if (mainWindow) WebViewCompat.addDocumentStartJavaScript(webView, moonTheme(context), setOf("chatgpt.com", "www.chatgpt.com"))
+            WebViewCompat.addDocumentStartJavaScript(webView, pageOverrides(context), everywhere)\n            if (mainWindow) WebViewCompat.addDocumentStartJavaScript(webView, moonTheme(context), everywhere)
             if (mainWindow) {
                 WebViewCompat.addDocumentStartJavaScript(webView, pageReadyWatcher(context), everywhere)
                 WebViewCompat.addDocumentStartJavaScript(webView, focusGuard(context), everywhere)
