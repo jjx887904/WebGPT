@@ -56,6 +56,9 @@ android {
             buildConfigField "boolean", "EXPERIMENTAL", "false"
         }
         debug {
+            // Keep the themed build installable alongside the original WebGPT.
+            applicationIdSuffix ".anime"
+            versionNameSuffix "-anime"
             signingConfig signingConfigs.debug
             // v6.24.31: debuggable=false — a debuggable APK is JIT-only and
             // never AOT-compiled, which slowed the whole UI thread in every
