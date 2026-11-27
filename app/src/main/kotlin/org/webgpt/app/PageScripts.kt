@@ -22,7 +22,10 @@ internal object PageScripts {
     private const val PAGE_READY_WATCHER = "js/page_ready_watcher.js"
 
     /** Stops the site from focusing the composer (and opening the keyboard) by itself. */
-    private const val FOCUS_GUARD = "js/focus_guard.js"\n\n    /** Injects the optional MoonGPT visual theme controls. */\n    private const val MOON_THEME = "js/moon_theme.js"
+    private const val FOCUS_GUARD = "js/focus_guard.js"
+
+    /** Injects the optional MoonGPT visual theme controls. */
+    private const val MOON_THEME = "js/moon_theme.js"
 
     private val cache = HashMap<String, String>()
 
@@ -36,7 +39,9 @@ internal object PageScripts {
 
     fun pageReadyWatcher(context: Context): String = load(context, PAGE_READY_WATCHER)
 
-    fun focusGuard(context: Context): String = load(context, FOCUS_GUARD)\n\n    fun moonTheme(context: Context): String = load(context, MOON_THEME)
+    fun focusGuard(context: Context): String = load(context, FOCUS_GUARD)
+
+    fun moonTheme(context: Context): String = load(context, MOON_THEME)
 
     /**
      * Registers the scripts to run at document start in every frame (main frame
@@ -53,7 +58,8 @@ internal object PageScripts {
         val context = webView.context
         try {
             val everywhere = setOf("*")
-            WebViewCompat.addDocumentStartJavaScript(webView, pageOverrides(context), everywhere)\n            if (mainWindow) WebViewCompat.addDocumentStartJavaScript(webView, moonTheme(context), everywhere)
+            WebViewCompat.addDocumentStartJavaScript(webView, pageOverrides(context), everywhere)
+            if (mainWindow) WebViewCompat.addDocumentStartJavaScript(webView, moonTheme(context), everywhere)
             if (mainWindow) {
                 WebViewCompat.addDocumentStartJavaScript(webView, pageReadyWatcher(context), everywhere)
                 WebViewCompat.addDocumentStartJavaScript(webView, focusGuard(context), everywhere)
