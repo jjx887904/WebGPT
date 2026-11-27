@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WebGPT</string>
-    <string name="settings_title">WebGPT Settings</string>
+    <string name="app_name">MoonGPT</string>
+    <string name="settings_title">MoonGPT Settings</string>
 
     <!-- WebView Manager -->
     <string name="webview_manager">WebView Manager</string>
