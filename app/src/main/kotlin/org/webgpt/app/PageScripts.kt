@@ -24,6 +24,9 @@ internal object PageScripts {
     /** Stops the site from focusing the composer (and opening the keyboard) by itself. */
     private const val FOCUS_GUARD = "js/focus_guard.js"
 
+    /** Optional visual theme layer; it does not replace ChatGPT's page logic. */
+    private const val ANIME_GLASS_THEME = "js/anime_glass_theme.js"
+
     private val cache = HashMap<String, String>()
 
     @Synchronized
@@ -37,6 +40,8 @@ internal object PageScripts {
     fun pageReadyWatcher(context: Context): String = load(context, PAGE_READY_WATCHER)
 
     fun focusGuard(context: Context): String = load(context, FOCUS_GUARD)
+
+    fun animeGlassTheme(context: Context): String = load(context, ANIME_GLASS_THEME)
 
     /**
      * Registers the scripts to run at document start in every frame (main frame
@@ -57,6 +62,7 @@ internal object PageScripts {
             if (mainWindow) {
                 WebViewCompat.addDocumentStartJavaScript(webView, pageReadyWatcher(context), everywhere)
                 WebViewCompat.addDocumentStartJavaScript(webView, focusGuard(context), everywhere)
+                WebViewCompat.addDocumentStartJavaScript(webView, animeGlassTheme(context), everywhere)
             }
         } catch (t: Throwable) {
             Log.e(TAG, "addDocumentStartJavaScript failed", t)
