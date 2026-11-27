@@ -1,4 +1,4 @@
-(function () {
+(function () {\n  if (window.top !== window) return;
   if (window.__moonThemeInstalled) return;
   window.__moonThemeInstalled = true;
 
